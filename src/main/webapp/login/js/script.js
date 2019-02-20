@@ -1,12 +1,11 @@
 $(function(){
     function runEffect() {
-        $("#signUp").animate({
+        $("#signIn").animate({
             opacity: 0.5
         });
     }
 
-
-    $( "#signIn" ).on("click", function() {
+    $( "#signUp" ).on("click", function() {
         runEffect();
         return false;
     });
