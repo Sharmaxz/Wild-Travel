@@ -32,7 +32,7 @@
                 </div>
             </div>
         </form>
-        <form id="formRegistration" method="POST" action="<%=request.getContextPath()%>/create">
+        <form id="formRegistration" method="POST"action="<%=request.getContextPath()%>/login" >
             <div class="form-group">
                 <a href="" class="fas fa-chevron-left" onclick="return false;"></a>
                 <label>REGISTRATION</label>
@@ -43,15 +43,15 @@
             </div>
             <div class="form-group">
                 <label for="InputRSurname">Surname</label>
-                <input type="text" class="form-control" id="InputRSurname" value="${client.surname}" onkeyup="this.value=this.value.replace(/([^a-zA-Z \u00C0-\u00FF])/g,'');">
+                <input type="text" class="form-control" id="InputRSurname" name="InputRSurname" onkeyup="this.value=this.value.replace(/([^a-zA-Z \u00C0-\u00FF])/g,'');">
             </div>
             <div class="form-group">
                 <label for="InputREmail">Email</label>
-                <input type="email" class="form-control" id="InputREmail" value="${client.email}" onkeyup="this.value=this.value.replace(/ /,'');">
+                <input type="email" class="form-control" id="InputREmail" name="InputREmail" onkeyup="this.value=this.value.replace(/ /,'');">
             </div>
             <div class="form-group">
                 <label for="InputRPassword">Password</label>
-                <input type="password" class="form-control" id="InputRPassword" value="${client.password}">
+                <input type="password" class="form-control" id="InputRPassword" name="InputRPassword">
                 <div class="progress">
                     <div class="progress-bar" role="progressbar"></div>
                 </div>
@@ -61,7 +61,7 @@
                 <input type="password" class="form-control invalid" id="InputRCPassword">
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary" id="ButtonRegistration" disabled="disabled">Submit</button>
+                <button type="submit" class="btn btn-primary" id="ButtonRegistration" disabled="">Submit</button>
             </div>
         </form>
     </div>

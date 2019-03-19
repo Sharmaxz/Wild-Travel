@@ -39,38 +39,56 @@ $(function(){
         let passwordRCCheck = $("#InputRCPassword").val();
         CheckPassword(passwordRCheck, passwordRCCheck);
 
-        if($("#InputRName").val().length == 0) {
-            console.log($("#InputRName").val())
-            if ($("#InputRSurname").val().length == 0) {
-                $("#ButtonRegistration").prop('disabled', true);
-            }
-        }
-        else {
-            $("#ButtonRegistration").prop('disabled', false);
-        }
 
 
 
 
     },500);
+    var array = [];
+    function CheckSubmit(value){
+        let submit = false;
+        console.log(array);
+        if(array.indexOf(value) >-1){
+            array.push(value);
+        }
 
-    function CheckSubmit(){
+        if(submit) {
+            $("#ButtonRegistration").prop("disabled", true);
+        }
+        else{
+            $("#ButtonRegistration").prop('disabled', false);
+        }
+    }
 
-
+    function DeletObjectArray(value){
+        let index = array.indexOf(value);
+        if(index >-1){
+            array.splice(index, 1);
+        }
     }
 
     function CheckEmail(email) {
         let regex = /^([\w\!\#$\%\&\'\*\+\-\/\=\?\^\`{\|\}\~]+\.)*[\w\!\#$\%\&\'\*\+\-\/\=\?\^\`{\|\}\~]+@((((([a-z0-9]{1}[a-z0-9\-]{0,62}[a-z0-9]{1})|[a-z])\.)+[a-z]{2,6})|(\d{1,3}\.){3}\d{1,3}(\:\d{1,5})?)$/i
-        CheckSubmit("email");
+        if(email != null){
+            CheckSubmit("email");
+        }
+        else{
+            DeletObjectArray(email);
+        }
+
         return regex.test(email);
+
     }
 
     function CheckPassword(password, passwordC){
         if(passwordC != null) {
             if (passwordC != password) {
                 $("#InputRCPassword").addClass("invalid");
+                console.log("Delet Password");
+                DeletObjectArray("password");
             } else  {
                 $("#InputRCPassword").removeClass("invalid");
+                console.log("Ok Password");
                 CheckSubmit("password");
             }
         }

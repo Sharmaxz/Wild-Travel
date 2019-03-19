@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -16,16 +17,25 @@ public class LoginController {
     ClientRepository clientRepository;
 
     @RequestMapping (value = "/login" , method = RequestMethod.GET )
-    public String index(){return "WEB-INF/login/login.jsp";}
+    public String index(@RequestParam(value = "mensagem", required = false) String  mensagem){
+        if(mensagem != null) {
+            //model.
+        }
+        return "WEB-INF/login/login.jsp";
+    }
 
-    @RequestMapping(value = "create", method = RequestMethod.POST )
-    public Client create(@RequestParam("InputRName") String name,
-                         @RequestParam("surname") String surname,
-                         @RequestParam("email") String email,
-                         @RequestParam("password") String password) {
+    @RequestMapping(value = "/login", method = RequestMethod.POST )
+    public String create(@RequestParam("InputRName") String name,
+                         @RequestParam("InputRSurname") String surname,
+                         @RequestParam("InputREmail") String email,
+                         @RequestParam("InputRPassword") String password,
+                         RedirectAttributes redirectAttributes
+                         ) {
         Client client = new Client(name, surname, email, password);
-        //client.setName();
-        return clientRepository.save(client);
+        client = clientRepository.save(client);
+
+        redirectAttributes.addAttribute("mensagem", "Usuario " + name + " salvo com sucesso");
+        return "redirect:/login";
     }
 
 }
