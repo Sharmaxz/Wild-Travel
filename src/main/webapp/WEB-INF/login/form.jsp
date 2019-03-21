@@ -1,6 +1,6 @@
 <div id="signIn" class="container-login-center">
     <div class="container-login shadow p-3 mb-5 rounded">
-        <form id="formLogin">
+        <form id="formLogin" method="POST" action="<%=request.getContextPath()%>/login">
             <div class="form-group">
                 <label>SIGN IN</label>
             </div>
@@ -32,7 +32,7 @@
                 </div>
             </div>
         </form>
-        <form id="formRegistration" method="POST"action="<%=request.getContextPath()%>/login" >
+        <form id="formRegistration" method="POST"action="<%=request.getContextPath()%>/register">
             <div class="form-group">
                 <a href="" class="fas fa-chevron-left" onclick="return false;"></a>
                 <label>REGISTRATION</label>

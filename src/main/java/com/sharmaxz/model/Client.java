@@ -13,7 +13,7 @@ public class Client {
     String name;
     @Column(name = "surname")
     String surname;
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     String email;
     @Column(name = "password")
     String password;
@@ -36,5 +36,17 @@ public class Client {
     public String getName() {return name; }
 
     public void setName(String name) { this.name = name; }
+
+    public String getSurname() {return surname; }
+
+    public void setSurname(String name) { this.surname = surname; }
+
+    public String getEmail() {return email; }
+
+    public void setEmail(String name) { this.email = email; }
+
+    public String getPassword() {return password; }
+
+    public void setPassword(String name) { this.password = password; }
 
 }
