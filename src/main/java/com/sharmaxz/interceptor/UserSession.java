@@ -11,15 +11,15 @@ public class UserSession {
 
     Client client;
 
-    public void addLoggedUser(Client client) {
-        this.client = client;
-    }
-
     public Client getLoggedUser() {
         return client;
     }
 
     public void removeLoggedUser() {
         this.client = null;
+    }
+
+    public void addLoggerUser(Client client) {
+            this.client = client;
     }
 }

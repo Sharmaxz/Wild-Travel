@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Map;
+
 
 @Controller
 public class LoginController {
@@ -38,18 +40,17 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST )
     public String create(@RequestParam("InputEmail") String email,
-                         @RequestParam("InputPassword") String password
-    ) {
+                         @RequestParam("InputPassword") String password,
+                         Map<String, Object> model) {
         Client client = clientRepository.findByEmail(email);
+        System.out.println(client);
         if(client != null && client.getPassword().equals(password)) {
             userSession.addLoggerUser(client);
             return "redirect:/";
         }else{
-
+            model.put("message", "Login not valid");
+            return "/login";
         }
-
-        return " ";
-
     }
 
 }

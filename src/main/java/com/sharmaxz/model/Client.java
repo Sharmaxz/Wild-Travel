@@ -18,6 +18,8 @@ public class Client {
     @Column(name = "password")
     String password;
 
+    public Client(){}
+
     public Client(String name, String surname, String email, String password) {
         this.name = name;
         this.surname = surname;

@@ -10,7 +10,7 @@
             </div>
             <div class="form-group">
                 <label for="InputPassword">Password</label>
-                <input type="password" class="form-control" id="InputPassword" >
+                <input type="password" class="form-control" id="InputPassword" name="InputPassword" >
             </div>
             <div  class="form-group">
                 <div style="left: -100px" class="form-check">
