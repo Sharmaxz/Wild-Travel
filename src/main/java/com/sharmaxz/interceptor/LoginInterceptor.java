@@ -8,6 +8,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
@@ -20,8 +22,11 @@ public class LoginInterceptor implements HandlerInterceptor {
         String url = httpServletRequest.getRequestURI();
         // recupera usuario logado
         Client client = userSession.getLoggedUser();
-        System.out.println(client);
         if(client != null) {
+            if(url.contains("/login") || url.contains("/register")) {
+                httpServletResponse.sendRedirect("/");
+                return false;
+            }
             return true; // se tem usuario logado, pode acessar qualquer pagina
         } else if(url.contains("/") ) {
             // se nao tem usuario logado, so pode acessar paginas publicas
