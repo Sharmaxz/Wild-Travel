@@ -1,5 +1,7 @@
-# Java Servlet Travel Website
+# Wild Travel
 
-## Projeto de Bloco - Desenvolvimento Java - INFNET
+It's a website developed in Java to find trips
 
+## Institute
 
+[Instituto INFNET](https://www.infnet.edu.br/esti/)
